@@ -2,7 +2,7 @@ const form = document.querySelector("form");
 const input = document.querySelector("form input");
 const message = document.querySelector(".message");
 const cards = document.querySelector(".cards");
-const cities = [];
+let cities = [];
 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -92,6 +92,9 @@ cards.addEventListener("click", function (e) {
     e.target.parentElement.style.display = "none";
 
     let classNames = e.target.parentElement.className.split(" ");
-    cities.splice(classNames[1]);
+    let newArray = cities.filter(function (city) {
+      return city != classNames[1];
+    });
+    cities = newArray;
   }
 });
